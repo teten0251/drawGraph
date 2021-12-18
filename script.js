@@ -1,4 +1,12 @@
 function drawChart() {
+
+    let chartBox = document.getElementById("chartBox");
+    chartBox.innerHTML = "";
+
+    let canvas = document.createElement("canvas");
+    canvas.id = "myChart";
+    chartBox.appendChild(canvas);
+
     const text = document.getElementById("text").value,
         inputData = text.split('\n'),
         cleanData = inputData.filter(Boolean);
@@ -38,12 +46,12 @@ function createKeyValue(inputData) {
     let keyValueData = {};
     for (let n = 0; n < inputData.length; n++) {
         if (n === 0) {
-            keyValueData[inputData[n]] = 0;
+            keyValueData[inputData[n]] = 1;
         } else {
             if (inputData[n] in keyValueData) {
                 keyValueData[inputData[n]]++;
             } else {
-                keyValueData[inputData[n]] = 0;
+                keyValueData[inputData[n]] = 1;
             }
         }
     }
