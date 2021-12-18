@@ -13,15 +13,17 @@
 <body>
     <div id="leftBox">
         <p>以下にデータを貼り付け。</p>
-        <textarea name="" id="" cols="" rows=""></textarea>
+        <textarea name="" id="text" cols="" rows=""></textarea>
     </div>
     <div id="middleBox">
         <img src="./img/arraw.svg" id="arraw" alt="" srcset="">
     </div>
     <div id="rightBox">
         <div>
-            <select name="" id="">
-                <option value="">円グラフ</option>
+            <select name="グラフ" id="">
+                <option value="円グラフ" selected="selected">円グラフ</option>
+                <option value="ヒストグラム">ヒストグラム（未実装）</option>
+                <option value="バブルチャート">バブルチャート（未実装）</option>
             </select>
             <input type="button" value="描画" onclick="drawChart()">
         </div>
