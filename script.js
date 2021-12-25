@@ -15,31 +15,63 @@ function drawChart() {
         return;
     }
 
+    const graphType = document.getElementById("graphType").value;
+
     let formattedData = createKeyValue(cleanData),
         labels = Object.keys(formattedData);
     let chartData = [];
     for (let n = 0; n < labels.length; n++) {
         chartData.push(formattedData[labels[n]]);
     }
-    let colors = createColors(chartData.length);
+    const colors = createColors(chartData.length);
+    let data, config, myChart;
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'My First Dataset',
-            data: chartData,
-            backgroundColor: colors,
-            hoverOffset: 4
-        }]
-    };
-    const config = {
-        type: 'pie',
-        data: data,
-    };
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+    switch (graphType) {
+        case "円グラフ":
+            data = {
+                labels: labels,
+                datasets: [{
+                    label: '出力',
+                    data: chartData,
+                    backgroundColor: colors,
+                    hoverOffset: 4
+                }]
+            };
+            config = {
+                type: 'pie',
+                data: data,
+            };
+            myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            break;
+        case "棒グラフ":
+            data = {
+                labels: labels,
+                datasets: [{
+                    axis: 'y',
+                    label: 'データ',
+                    data: chartData,
+                    fill: false,
+                    backgroundColor: colors,
+                    borderColor: colors,
+                    borderWidth: 1
+                }]
+            };
+            config = {
+                type: 'bar',
+                data,
+                options: {
+                    indexAxis: 'y',
+                }
+            };
+            myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            break;
+    }
 }
 
 function createKeyValue(inputData) {
@@ -70,6 +102,17 @@ function createColors(count) {
             + getRandomIntInclusive(0, 255) + ","
             + getRandomIntInclusive(0, 255) + ","
             + getRandomIntInclusive(0, 255) + ")");
+    }
+    return colors;
+}
+
+function createBackgroundColors(count) {
+    let colors = [];
+    for (let n = 0; n < count; n++) {
+        colors.push("rgb("
+            + getRandomIntInclusive(0, 255) + ","
+            + getRandomIntInclusive(0, 255) + ","
+            + getRandomIntInclusive(0, 255) + ", 0.2" + ")");
     }
     return colors;
 }
