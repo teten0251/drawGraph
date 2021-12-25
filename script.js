@@ -106,17 +106,6 @@ function createColors(count) {
     return colors;
 }
 
-function createBackgroundColors(count) {
-    let colors = [];
-    for (let n = 0; n < count; n++) {
-        colors.push("rgb("
-            + getRandomIntInclusive(0, 255) + ","
-            + getRandomIntInclusive(0, 255) + ","
-            + getRandomIntInclusive(0, 255) + ", 0.2" + ")");
-    }
-    return colors;
-}
-
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
