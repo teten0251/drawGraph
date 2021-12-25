@@ -71,6 +71,25 @@ function drawChart() {
                 config
             );
             break;
+        case "鶏頭図":
+            data = {
+                labels: labels,
+                datasets: [{
+                    label: 'データ',
+                    data: chartData,
+                    backgroundColor: colors
+                }]
+            };
+            config = {
+                type: 'polarArea',
+                data: data,
+                options: {}
+            };
+            myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            break;
     }
 }
 
