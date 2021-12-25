@@ -77,7 +77,7 @@ function drawChart() {
                 datasets: [{
                     label: 'データ',
                     data: chartData,
-                    backgroundColor: colors
+                    backgroundColor: createColorsForPolarChart(chartData.length)
                 }]
             };
             config = {
@@ -121,6 +121,17 @@ function createColors(count) {
             + getRandomIntInclusive(0, 255) + ","
             + getRandomIntInclusive(0, 255) + ","
             + getRandomIntInclusive(0, 255) + ")");
+    }
+    return colors;
+}
+
+function createColorsForPolarChart(count) {
+    let colors = [];
+    for (let n = 0; n < count; n++) {
+        colors.push("rgb("
+            + getRandomIntInclusive(0, 255) + ","
+            + getRandomIntInclusive(0, 255) + ","
+            + getRandomIntInclusive(0, 255) + ", 0.4)");
     }
     return colors;
 }
